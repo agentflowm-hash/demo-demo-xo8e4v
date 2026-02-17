@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Fotograf Leipzig – Premium Landing Page</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root{
+  --primary:#1e3a5f;
+  --accent:#d4af37;
+  --bg:#f5f7fa;
+  --text:#333;
+  --white:#fff;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:'Inter',sans-serif;
+  color:var(--text);
+  background:var(--bg);
+  line-height:1.6;
+  scroll-behavior:smooth;
+}
+a{color:inherit;text-decoration:none;}
+header{
+  position:sticky;
+  top:0;
+  width:100%;
+  background:rgba(255,255,255,0.8);
+  backdrop-filter:blur(8px);
+  z-index:1000;
+  transition:background .3s;
+}
+header.scrolled{background:var(--primary);color:var(--white);}
+nav{
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:1rem;
+}
+.logo{font-size:1.5rem;font-weight:700;color:var(--primary);}
+nav ul{
+  list-style:none;
+  display:flex;
+  gap:1.5rem;
+}
+nav ul li a{
+  font-weight:600;
+}
+nav .menu-toggle{
+  display:none;
+}
+@media(max-width:768px){
+  nav ul{
+    position:fixed;
+    top:0;
+    right:-100%;
+    height:100vh;
+    width:250px;
+    background:var(--primary);
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:2rem;
+    transition:right .3s;
+  }
+  nav ul.show{right:0;}
+  nav .menu-toggle{
+    display:block;
+    font-size:1.5rem;
+    cursor:pointer;
+    color:var(--primary);
+  }
+  nav.scrolled .menu-toggle{color:var(--white);}
+}
+.hero{
+  position:relative;
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:var(--white);
+  overflow:hidden;
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(45deg,var(--primary),#3b6fa5);
+  background-size:400% 400%;
+  animation:gradientMove 12s ease infinite;
+  z-index:-1;
+}
+@keyframes gradientMove{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+.hero h1{
+  font-size:3rem;
+  text-shadow:2px 2px 6px rgba(0,0,0,0.5);
+  animation:float 6s ease-in-out infinite;
+}
+@keyframes float{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-10px);}
+}
+.trust{
+  display:flex;
+  gap:2rem;
+  margin-top:2rem;
+  justify-content:center;
+}
+.trust .badge{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  background:rgba(255,255,255,0.2);
+  padding:.5rem 1rem;
+  border-radius:12px;
+  backdrop-filter:blur(5px);
+}
+.trust .badge i{
+  font-size:1.5rem;
+  margin-bottom:.5rem;
+  color:var(--accent);
+}
+section{
+  padding:4rem 1rem;
+}
+.container{
+  max-width:1200px;
+  margin:auto;
+}
+h2{
+  text-align:center;
+  margin-bottom:2rem;
+  font-size:2rem;
+  color:var(--primary);
+}
+.cards{
+  display:grid;
+  gap:1.5rem;
+}
+@media(min-width:768px){
+  .cards{grid-template-columns:repeat(3,1fr);}
+}
+.card{
+  background:rgba(255,255,255,0.2);
+  border:1px solid rgba(255,255,255,0.3);
+  border-radius:12px;
+  padding:1.5rem;
+  backdrop-filter:blur(10px);
+  transition:transform .3s,box-shadow .3s;
+}
+.card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 8px 20px rgba(0,0,0,0.2);
+}
+.card i{
+  font-size:2rem;
+  margin-bottom:.5rem;
+  color:var(--accent);
+}
+.service-card{
+  text-align:center;
+}
+.service-card .icon{
+  width:80px;
+  height:80px;
+  margin:auto;
+  border-radius:50%;
+  background:var(--primary);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:1rem;
+  transition:transform .3s;
+}
+.service-card .icon i{
+  font-size:2rem;
+  color:var(--white);
+}
+.service-card:hover .icon{
+  transform:scale(1.1);
+}
+.service-card:hover{
+  box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+.social-proof{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:1.5rem;
+}
+.counters{
+  display:flex;
+  gap:2rem;
+}
+.counter{
+  font-size:2.5rem;
+  font-weight:700;
+  color:var(--primary);
+}
+.counter span{
+  display:block;
+  font-size:1rem;
+  color:var(--text);
+}
+footer{
+  background:var(--primary);
+  color:var(--white);
+  text-align:center;
+  padding:2rem 1rem;
+}
+.scroll-reveal{
+  opacity:0;
+  transform:translateY(20px);
+  transition:all .6s ease;
+}
+.scroll-reveal.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var forms = document.querySelectorAll('form');
+  forms.forEach(function(form) {
+    if (form.querySelector('input[type="email"]') && form.querySelector('textarea')) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var fd = new FormData(form);
+        var data = {
+          name: fd.get('name') || fd.get('Name') || '',
+          email: fd.get('email') || fd.get('Email') || '',
+          phone: fd.get('phone') || fd.get('telefon') || '',
+          message: fd.get('message') || fd.get('nachricht') || '',
+          firma: 'Unbekannt',
+          demo_url: window.location.href
+        };
+        var btn = form.querySelector('button[type="submit"], input[type="submit"]');
+        if (btn) btn.disabled = true;
+        fetch('https://6aa2-31-17-18-172.ngrok-free.app/webhook/kontakt-formular', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify(data)
+        })
+        .then(function(r) { return r.json(); })
+        .then(function(res) {
+          alert(res.success ? 'Danke! Wir melden uns.' : 'Fehler: ' + res.message);
+          if (res.success) form.reset();
+        })
+        .catch(function() { alert('Fehler. Bitte kontakt@agentflowm.de kontaktieren.'); })
+        .finally(function() { if (btn) btn.disabled = false; });
+      });
+    }
+  });
+});
+</script>
+</head>
+<body>
+<header id="header">
+  <nav>
+    <div class="logo">PicturePeople Leipzig</div>
+    <div class="menu-toggle" id="menuToggle"><i class="fa-solid fa-bars"></i></div>
+    <ul id="navMenu">
+      <li><a href="#vorteile">Vorteile</a></li>
+      <li><a href="#leistungen">Leistungen</a></li>
+      <li><a href="#social">Erfolge</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero">
+  <div>
+    <h1>Ihre Momente – Professionell festgehalten</h1>
+    <p class="scroll-reveal">Erleben Sie Fotografie auf höchstem Niveau in Leipzig.</p>
+    <div class="trust scroll-reveal">
+      <div class="badge"><i class="fa-solid fa-award"></i>10+ Jahre Erfahrung</div>
+      <div class="badge"><i class="fa-solid fa-bolt"></i>Schnelle Lieferzeit</div>
+      <div class="badge"><i class="fa-solid fa-lock"></i>Datenschutz &amp; Vertraulichkeit</div>
+    </div>
+  </div>
+</section>
+
+<section id="vorteile">
+  <div class="container">
+    <h2 class="scroll-reveal">Warum Sie uns wählen</h2>
+    <div class="cards">
+      <div class="card scroll-reveal">
+        <i class="fa-solid fa-camera-retro"></i>
+        <h3>Exklusive Bildsprache</h3>
+        <p>Wir schaffen einzigartige Aufnahmen, die Ihre Geschichte erzählen.</p>
+      </div>
+      <div class="card scroll-reveal">
+        <i class="fa-solid fa-clock"></i>
+        <h3>Flexibel &amp; Schnell</h3>
+        <p>Terminabsprachen nach Ihrem Zeitplan – Bilder innerhalb 48 h.</p>
+      </div>
+      <div class="card scroll-reveal">
+        <i class="fa-solid fa-user-shield"></i>
+        <h3>Vertraulich &amp; Sicher</h3>
+        <p>Ihre Daten und Aufnahmen sind bei uns in sicheren Händen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="leistungen" style="background:var(--white);">
+  <div class="container">
+    <h2 class="scroll-reveal">Unsere Leistungen</h2>
+    <div class="cards">
+      <div class="service-card scroll-reveal">
+        <div class="icon"><i class="fa-solid fa-portrait"></i></div>
+        <h3>Portraitfotografie</h3>
+        <p>Individuelle Porträts für Business &amp; Privat.</p>
+      </div>
+      <div class="service-card scroll-reveal">
+        <div class="icon"><i class="fa-solid fa-building"></i></div>
+        <h3>Architekturfotografie</h3>
+        <p>Stimmungsvolle Aufnahmen von Gebäuden und Innenräumen.</p>
+      </div>
+      <div class="service-card scroll-reveal">
+        <div class="icon"><i class="fa-solid fa-heart"></i></div>
+        <h3>Hochzeitsfotografie</h3>
+        <p>Emotionale Momente – von der Vorbereitung bis zum Fest.</p>
+      </div>
+      <div class="service-card scroll-reveal">
+        <div class="icon"><i class="fa-solid fa-basket-shopping"></i></div>
+        <h3>Produktfotografie</h3>
+        <p>Detailreiche Aufnahmen für Online‑Shops und Kataloge.</p>
+      </div>
+      <div class="service-card scroll-reveal">
+        <div class="icon"><i class="fa-solid fa-camera"></i></div>
+        <h3>Eventfotografie</h3>
+        <p>Professionelle Dokumentation von Firmen‑ und privaten Events.</p>
+      </div>
+      <div class="service-card scroll-reveal">
+        <div class="icon"><i class="fa-solid fa-video"></i></div>
+        <h3>Video‑Produktionen</h3>
+        <p>Bewegte Bilder für Werbe‑ und Imagefilme.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="social" style="background:var(--bg);">
+  <div class="container">
+    <h2 class="scroll-reveal">Zahlen, die überzeugen</h2>
+    <div class="social-proof">
+      <div class="counters scroll-reveal">
+        <div class="counter"><span id="years">0</span><span>Jahre Erfahrung</span></div>
+        <div class="counter"><span id="clients">0</span><span>Kunden</span></div>
+        <div class="counter"><span id="projects">0</span><span>Projekte</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="kontakt" style="background:var(--white);">
+  <div class="container">
+    <h2 class="scroll-reveal">Jetzt Termin vereinbaren</h2>
+    <p class="scroll-reveal" style="text-align:center;">Rufen Sie uns an oder schreiben Sie uns – wir freuen uns auf Sie!</p>
+    <p class="scroll-reveal" style="text-align:center;">
+      <i class="fa-solid fa-phone"></i> +49 341 1234567 &nbsp;|&nbsp;
+      <i class="fa-solid fa-envelope"></i> info@picturepeople.de
+    </p>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 PicturePeople Leipzig</p>
+</footer>
+
+<script>
+/* Sticky header background change */
+window.addEventListener('scroll',()=>{const header=document.getElementById('header');if(window.scrollY>50){header.classList.add('scrolled');}else{header.classList.remove('scrolled');}});
+/* Mobile menu toggle */
+document.getElementById('menuToggle').addEventListener('click',()=>{document.getElementById('navMenu').classList.toggle('show');});
+/* Counter animation */
+function animateCount(id,target,duration){
+  const el=document.getElementById(id);
+  let start=0;
+  const step=target/duration*16;
+  const timer=setInterval(()=>{start+=step; if(start>=target){start=target;clearInterval(timer);} el.textContent=Math.floor(start);},16);
+}
+animateCount('years',10,2000);
+animateCount('clients',250,2000);
+animateCount('projects',500,2000);
+/* Scroll reveal */
+const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');}});{threshold:0.1});
+document.querySelectorAll('.scroll-reveal').forEach(el=>observer.observe(el));
+</script>
+
+<div id="wz-banner" style="position:fixed;bottom:0;left:0;right:0;background:linear-gradient(135deg,#1a365d,#2563eb);color:#fff;padding:20px;text-align:center;z-index:99999;box-shadow:0 -4px 20px rgba(0,0,0,.3);font-family:sans-serif">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:20px">
+    <div style="flex:1;min-width:280px">
+      <p style="margin:0;font-size:18px;font-weight:600">Gefällt Ihnen diese Demo?</p>
+      <p style="margin:5px 0 0;font-size:14px;opacity:.9">Erstellt von <strong>AgentFlow</strong></p>
+    </div>
+    <div style="display:flex;gap:12px">
+      <a href="mailto:kontakt@agentflowm.de?subject=Interesse%20Webseite%20Unbekannt" style="padding:12px 28px;background:#fff;color:#1a365d;text-decoration:none;border-radius:8px;font-weight:600">Kontakt</a>
+      <a href="https://agentflowm.de" target="_blank" style="padding:12px 28px;background:transparent;color:#fff;text-decoration:none;border-radius:8px;font-weight:600;border:2px solid #fff">Mehr</a>
+    </div>
+  </div>
+  <p style="margin:15px 0 0;font-size:12px;opacity:.7">Demo bis 20.2.2026 | kontakt@agentflowm.de</p>
+</div>
+<div style="height:140px"></div>
+</body>
+</html>
